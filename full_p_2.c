@@ -32,6 +32,8 @@ int main(int argc, char *argv[]){
   printf("mu_w = %f	mu_n = %f\n",mu_w,mu_n);
   printf("La presion capilar es %f \n",po);
   
+  calcular_lambdas();
+  
 /*  
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   while(bandera==0  ){
@@ -90,7 +92,7 @@ int main(int argc, char *argv[]){
   guardar_v(integral_total,iteraciones);
   guardar_1(saturacion);
   guardar_2(presion);
-  guardar_o(saturacion,2);
+  guardar_o(lambda_d,2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   
   
