@@ -113,166 +113,6 @@ void inicializar_K(){
     }
   }
 
-/*  
- 
-   for(f=6 ; f<12 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-   for(f=16 ; f<20 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-     for(f=25 ; f<30 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-  
-    for(f=36 ; f<40 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-   for(f=44 ; f<49 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-  
-     for(f=55 ; f<61 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
- 
-    for(f=65 ; f<70 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-   for(f=74 ; f<79 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-     for(f=86 ; f<90 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-    for(f=94 ; f<99 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-
- 
- 
-   for(f=104 ; f<110 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-   for(f=115 ; f<120 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-     for(f=125 ; f<129 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-  
-    for(f=136 ; f<140 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-   for(f=144 ; f<149 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-  
-     for(f=153 ; f<160 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
- 
-    for(f=165 ; f<170 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-   for(f=174 ; f<179 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
-  
-     for(f=186 ; f<190 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
-    for(f=193 ; f<196 ; f++){
-    for(c=15 ; c<20 ; c++){
-      K[TAM_C*f + c]= 0.0 ; 
-    }
-  }
- 
- */
-  
-
- 
-  
- /*
-  for(f=0 ; f<(TAM_F/3) ; f++){
-  c=(TAM_C/3);
-  K[TAM_C*f + c]= 0.0 ;
-  K[TAM_C*f + c+1]= 0.0 ; 
-  K[TAM_C*f + c+2]= 0.0 ;
-  }
- */
- 
- /*
-   for(f=0 ; f<TAM_F ; f++){
-    for(c=0 ; c<TAM_C ; c++){
-      if((c==f) || (1 +c==f) || (-1 +c==f) || (-2+c==f) || (-3+c==f) || (-4+c==f) || (-5+c==f) || (-6+c==f) || (2+c==f) || (3+c==f) || (4+c==f) || (5+c==f) || (6+c==f)){
-      K[TAM_C*f + c]= 1.0 ;
-      }
-    }
-  }
- 
-   for(f=0 ; f<TAM_F/5 ; f++){
-    for(c=0 ; c<TAM_C/5 ; c++){
-      K[TAM_C*f + c]= 1.0 ; 
-    }
-  }
- */
   
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -304,7 +144,7 @@ void inicializar_Q_W(){
   if(CB==1){
       f=0 ;
 	c=0 ;
-	  Q_W[TAM_C*f + c]= q_w ; 
+	  Q_W[TAM_C*f + c]= q_w*TAM_F ; 
 	
       
 
@@ -341,7 +181,7 @@ void inicializar_Q_N(){
   if(CB==1){
       f=TAM_F -1 ;
 	c=TAM_C-1 ;
-	  Q_N[TAM_C*f + c]= -q_n ; 
+	  Q_N[TAM_C*f + c]= -q_n*TAM_F ; 
 	
       
 
@@ -353,7 +193,7 @@ void inicializar_saturacion(){
   
   int c=0;
   int f=0;
-  double alfa=40 ;
+  double alfa=(TAM_C/2) ;
   for(f=0 ; f<TAM_F ; f++){
     for(c=0 ; c<TAM_C ; c++){
       saturacion[TAM_C*f + c]= 0.0 ; 

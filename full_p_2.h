@@ -10,9 +10,9 @@
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 /* Definicion de parametros globales                                             */
-#define TAM_C 40
+#define TAM_C 100
 #define TAM_F 100
-#define CB 0   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
+#define CB 1   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
 
 #define mu_w 1.0
 #define mu_n 8.0

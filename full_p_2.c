@@ -32,6 +32,7 @@ int main(int argc, char *argv[]){
   printf("mu_w = %f	mu_n = %f\n",mu_w,mu_n);
   printf("La presion capilar es %f \n",po);
   
+/*  
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   while(bandera==0  ){
   //for(t=1 ; t<= iteraciones ; t++){ // Inicio del FOR
@@ -39,14 +40,6 @@ int main(int argc, char *argv[]){
   calcular_lambdas();
   calcular_presion_capilar();
   calcular_termino_presion_capilar();
-  /*
-  if( ( t % 100 ) == 0){ 
-  guardar_o(saturacion,t); // AGREGADO
-  guardar_o(presion,t+1000000); // AGREGADO
-  guardar_o(presion_capilar,t+2000000); // AGREGADO
-  guardar_o(termino_presion_capilar,t+3000000); // AGREGADO
-  }
-  */
   
   t_aux=0;
   diferencia=0.001;
@@ -90,12 +83,14 @@ int main(int argc, char *argv[]){
   bandera=0;
   control_bandera(control);
   }  // Fin del FOR  
+*/  
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   printf("\n \n \n Delta_T = %.15f    Tiempo Total=%.15f\n \n",delta_t,tiempo_total);
   printf("\n \n \n.... FIN ....\n \n");
   guardar_v(integral_total,iteraciones);
-  guardar_1(presion_capilar);
+  guardar_1(saturacion);
   guardar_2(presion);
+  guardar_o(saturacion,2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   
   
