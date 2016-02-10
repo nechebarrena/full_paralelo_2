@@ -15,7 +15,7 @@
 #define CB 0   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
 
 #define mu_w 1.0
-#define mu_n 8.0
+#define mu_n 16.0
 
 #define q_n 0.1
 #define q_w 0.1
