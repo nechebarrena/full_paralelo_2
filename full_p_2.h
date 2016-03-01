@@ -13,9 +13,10 @@
 #define TAM_C 100
 #define TAM_F 100
 #define CB 1   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
+#define inicio 0 // 0 para una saturacion seteada en el programa y 1 para cargar una saturacion desde un archivo
 
 #define mu_w 1.0
-#define mu_n 8.0
+#define mu_n 16.0
 
 #define q_n 0.1
 #define q_w 0.1
@@ -30,7 +31,7 @@
 
 #define iteraciones 10000000
 
-#define control 23
+#define control 30
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
@@ -161,6 +162,8 @@ void inicializar_variables();
 void calcular_lambdas();
 void calcular_velocidades();
 void control_bandera(int columna);
+
+void leer_o(double *matriz);
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 /*  Funciones del archivo calculo_presion.c                                      */

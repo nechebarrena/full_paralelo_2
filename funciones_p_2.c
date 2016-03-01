@@ -29,6 +29,37 @@ void guardar_o(double *matriz,int num){    // la funcion guardar graba los datos
 }
 // El formato con el que guardo los datos es [ fila_i -renglon vacio- fila_i+1 -renglon vacio- fila_i+2 ..... ]   
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void leer_o(double *matriz){    // la funcion guardar graba los datos de matriz en un archivo llamado salia-1.dat
+  
+  
+  
+  
+  
+  
+  
+  FILE *archivo;   // creo el archivo
+
+  
+
+ 
+  archivo= fopen("29.dat","r"); //abro el archivo y le asigno el nombre
+  int f=0; 
+  int c=0;
+  int i=0;
+  
+  for(f=0 ; f<TAM_F ; f++){ //barro todas las filas de la matriz
+    for(c=0 ; c<TAM_C ; c++){ //barro todas las columnas de la matriz
+      i=fscanf(archivo,"%lf",&matriz[TAM_C*f + c]); //guardo un dato y le doy enter
+      //fseek(archivo, 9, SEEK_CUR);
+    }
+      //fseek(archivo, 10, SEEK_CUR); //cuando termino una fila le doy un enter
+  }
+  
+  
+  fclose(archivo); //cierro el archivo
+}
+// El formato con el que guardo los datos es [ fila_i -renglon vacio- fila_i+1 -renglon vacio- fila_i+2 ..... ] 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void guardar_v(double *vector,int tam){    // la funcion guardar graba los datos de matriz en un archivo llamado salia-1.dat
   
   FILE *archivo;   // creo el archivo
@@ -105,14 +136,85 @@ void inicializar_K(){
   
   int c=0;
   int f=0;
-  
+  int barreras=1;
    
   for(f=0 ; f<TAM_F ; f++){
     for(c=0 ; c<TAM_C ; c++){
       K[TAM_C*f + c]= 1.0 ; 
     }
   }
+  
+  
+  
+  if(barreras==1){
+    
+    for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>5 && c<11 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+      for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>14 && c<17 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+  
+      for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>20 && c<23 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
 
+  
+    for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>25 && c<27 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+  
+      for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>30 && c<32 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+  
+  
+      for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>36 && f>35 && f<37 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+      for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>36 && f>25 && f<27 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+  
+  
+  
+  }
+  
   
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1462,7 +1564,12 @@ void alocar_variables(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void inicializar_variables(){
   inicializar_presion();
+  if(inicio==0){
   inicializar_saturacion();
+  }
+  else if(inicio==1){
+  leer_o(saturacion);  
+  }
   inicializar_Q_N();
   inicializar_Q_W();
   inicializar_K();

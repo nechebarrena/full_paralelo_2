@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
   double tiempo_total=0.0;
   int bandera_columna=23;
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
+ 
   alocar_variables();
   inicializar_variables();
   delta_tiempo();
@@ -32,9 +33,10 @@ int main(int argc, char *argv[]){
   printf("mu_w = %f	mu_n = %f\n",mu_w,mu_n);
   printf("La presion capilar es %f \n",po);
   
-  calcular_lambdas();
   
-/*  
+  
+
+/* 
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   while(bandera==0  ){
   //for(t=1 ; t<= iteraciones ; t++){ // Inicio del FOR
@@ -85,26 +87,19 @@ int main(int argc, char *argv[]){
   bandera=0;
   control_bandera(control);
   }  // Fin del FOR  
-*/  
+*/ 
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   printf("\n \n \n Delta_T = %.15f    Tiempo Total=%.15f\n \n",delta_t,tiempo_total);
   printf("\n \n \n.... FIN ....\n \n");
-  guardar_v(integral_total,iteraciones);
-  guardar_1(saturacion);
-  guardar_2(presion);
-  guardar_o(lambda_d,2);
+  //guardar_v(integral_total,iteraciones);
+  //guardar_1(saturacion);
+  //guardar_2(presion);
+  guardar_o(K,2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   
   
   
   
-  /*
-  calcular_lambdas();
-  guardar_o(lambda_d_1,1);
-  guardar_o(lambda_d_2,2);
-  guardar_o(lambda_d_3,3);
-  guardar_o(lambda_d_4,4);
-  */
   
   
   return 0;
