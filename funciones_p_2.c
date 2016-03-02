@@ -42,7 +42,7 @@ void leer_o(double *matriz){    // la funcion guardar graba los datos de matriz 
   
 
  
-  archivo= fopen("29.dat","r"); //abro el archivo y le asigno el nombre
+  archivo= fopen("1.dat","r"); //abro el archivo y le asigno el nombre
   int f=0; 
   int c=0;
   int i=0;
@@ -136,7 +136,7 @@ void inicializar_K(){
   
   int c=0;
   int f=0;
-  int barreras=1;
+  int barreras=0;
    
   for(f=0 ; f<TAM_F ; f++){
     for(c=0 ; c<TAM_C ; c++){
@@ -150,34 +150,25 @@ void inicializar_K(){
     
     for(f=0 ; f<TAM_F ; f++){
     for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>5 && c<11 ){
+      if( pow( (c-30)*(c-30) + (f-0)*(f-0) ,0.5)<4 ){
       K[TAM_C*f + c]= 0.00001 ;
       }
     }
   }
   
-      for(f=0 ; f<TAM_F ; f++){
-    for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>14 && c<17 ){
-      K[TAM_C*f + c]= 0.00001 ;
-      }
-    }
-  }
-  
-  
-      for(f=0 ; f<TAM_F ; f++){
-    for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>20 && c<23 ){
-      K[TAM_C*f + c]= 0.00001 ;
-      }
-    }
-  }
-  
-
   
     for(f=0 ; f<TAM_F ; f++){
     for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>25 && c<27 ){
+      if( pow( (c-27)*(c-27) + (f-12)*(f-12) ,0.5)<3 ){
+      K[TAM_C*f + c]= 0.00001 ;
+      }
+    }
+  }
+  
+  
+    for(f=0 ; f<TAM_F ; f++){
+    for(c=0 ; c<TAM_C ; c++){
+      if( pow( (c-21)*(c-21) + (f-21)*(f-21) ,0.5)<3 ){
       K[TAM_C*f + c]= 0.00001 ;
       }
     }
@@ -186,32 +177,12 @@ void inicializar_K(){
   
       for(f=0 ; f<TAM_F ; f++){
     for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>38 && c>30 && c<32 ){
+      if( pow( (c-11)*(c-11) + (f-27)*(f-27) ,0.5)<5 ){
       K[TAM_C*f + c]= 0.00001 ;
       }
     }
   }
-  
-  
-  
-      for(f=0 ; f<TAM_F ; f++){
-    for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>36 && f>35 && f<37 ){
-      K[TAM_C*f + c]= 0.00001 ;
-      }
-    }
-  }
-  
-      for(f=0 ; f<TAM_F ; f++){
-    for(c=0 ; c<TAM_C ; c++){
-      if(pow(f*f + c*c,0.5)<40 && pow(f*f + c*c,0.5)>36 && f>25 && f<27 ){
-      K[TAM_C*f + c]= 0.00001 ;
-      }
-    }
-  }
-  
-  
-  
+ 
   
   }
   

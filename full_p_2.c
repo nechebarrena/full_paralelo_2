@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
   int t=0;
   int t_aux=0;
   double tiempo_total=0.0;
-  int bandera_columna=23;
+  int bandera_columna=32;
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
  
   alocar_variables();
@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
   
   
 
-/* 
+ 
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   while(bandera==0  ){
   //for(t=1 ; t<= iteraciones ; t++){ // Inicio del FOR
@@ -87,14 +87,14 @@ int main(int argc, char *argv[]){
   bandera=0;
   control_bandera(control);
   }  // Fin del FOR  
-*/ 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   printf("\n \n \n Delta_T = %.15f    Tiempo Total=%.15f\n \n",delta_t,tiempo_total);
   printf("\n \n \n.... FIN ....\n \n");
   //guardar_v(integral_total,iteraciones);
   //guardar_1(saturacion);
   //guardar_2(presion);
-  guardar_o(K,2);
+  //guardar_o(K,2);
 //////////////////////////////////////////////////////////////////////////////////////////////////////    
   
   

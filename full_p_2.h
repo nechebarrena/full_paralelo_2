@@ -13,14 +13,14 @@
 #define TAM_C 100
 #define TAM_F 100
 #define CB 1   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
-#define inicio 0 // 0 para una saturacion seteada en el programa y 1 para cargar una saturacion desde un archivo
+#define inicio 1 // 0 para una saturacion seteada en el programa y 1 para cargar una saturacion desde un archivo
 
 #define mu_w 1.0
-#define mu_n 16.0
+#define mu_n 64.0
 
 #define q_n 0.1
 #define q_w 0.1
-#define po 0.05 // el grafico esta con 0.5
+#define po 0.0 // el grafico esta con 0.5
 
 #define cachito 0.0000000001
 #define error 0.0000000001  //0.0000000001 es lo que venia usando.
@@ -31,7 +31,7 @@
 
 #define iteraciones 10000000
 
-#define control 30
+#define control 80
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
