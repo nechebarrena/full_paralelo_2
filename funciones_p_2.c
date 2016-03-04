@@ -1535,15 +1535,27 @@ void alocar_variables(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void inicializar_variables(){
   inicializar_presion();
-  if(inicio==0){
+  
+  /// decido si seteo la saturacion en el programa o la cargo por medio de un archivo externo
+  if(leer_saturacion==0){
   inicializar_saturacion();
   }
-  else if(inicio==1){
+  else if(leer_saturacion==1){
   leer_o(saturacion);  
   }
+  ///
+  
   inicializar_Q_N();
   inicializar_Q_W();
+  
+  /// decido si seteo la permeabilidad en el programa o la cargo por medio de un archivo externo
+  if(leer_K==0){
   inicializar_K();
+  }
+  else if(leer_K){
+  leer_o(K);  
+  }
+  ///
   }
 
 
