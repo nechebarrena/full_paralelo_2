@@ -13,8 +13,8 @@
 #define TAM_C 200
 #define TAM_F 200
 #define CB 1   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
-#define leer_saturacion 1 // 0 para una saturacion seteada en el programa y 1 para cargar una saturacion desde un archivo
-#define leer_K 0 // 0 para una permeabilidad seteada en el programa y 1 para cargar una permeabilidad desde un archivo
+#define leer_saturacion 0 // 0 para una saturacion seteada en el programa y 1 para cargar una saturacion desde un archivo
+#define leer_K 1 // 0 para una permeabilidad seteada en el programa y 1 para cargar una permeabilidad desde un archivo
 
 #define mu_w 1.0
 #define mu_n 64.0
@@ -32,7 +32,7 @@
 
 #define iteraciones 10000000
 
-#define control 190
+#define control 195
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
