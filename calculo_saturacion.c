@@ -17,12 +17,19 @@ void calculo_saturacion(){
   esquina_inferior_derecha_s();
   }
   else if(CB==0){
+   
   recinto_interno_s(); 
+  
   borde_derecho_s();
+  
   borde_superior_s();
+  
   borde_inferior_s();
+  
   esquina_superior_derecha_s();
+  
   esquina_inferior_derecha_s();
+  
   
   for(k=0 ; k< TAM_F ; k++){
   saturacion_N[TAM_C*k + 0]=1.0;  
@@ -35,8 +42,9 @@ void calculo_saturacion(){
   esquina_superior_izquierda_s();
   */ 
   }
- 
+   
   copiar_s();
+   
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void recinto_interno_s(){
@@ -133,7 +141,7 @@ void recinto_interno_s(){
       + f_w_3*lambda_n_3_a*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
       + f_w_4*lambda_n_4_a*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
 
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
       //printf("\n el termino de presion capilar es =%f y el termino de la velocidad es=%f \n",gama,epsilon);
    
@@ -205,13 +213,12 @@ void borde_izquierdo_s(){
       
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
       
-      gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
-      + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
+      gama=  f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
       + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
       + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
       
       
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
   
  
       
@@ -276,11 +283,10 @@ void borde_derecho_s(){
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
      
       gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
-      + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
       + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
       + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
 
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
     
   }
@@ -345,16 +351,15 @@ void borde_superior_s(){
         f_w_4=0.0 ;
       }
 
-      
+       
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
-     
+       
       gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
       + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
       + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
-
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+       
 
     
   }
@@ -419,10 +424,9 @@ void borde_inferior_s(){
       
       gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
       + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
+      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)]);
 
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
     
   }
@@ -479,12 +483,10 @@ void esquina_superior_izquierda_s(){
       
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
       
-      gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
-      + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
+      gama=  f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
+      +  f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
       
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
 
       
       //printf("\n saturacion=%f epsilon=%f gama=%f\n",saturacion_N[TAM_C*f + (c)],epsilon,gama);
@@ -542,11 +544,9 @@ void esquina_superior_derecha_s(){
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
       
       gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
-      + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
       + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
 
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
 
   
@@ -599,12 +599,10 @@ void esquina_inferior_izquierda_s(){
       
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
      
-      gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
-      + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
+      gama= f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
+      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)]);
 
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
 
   
@@ -660,11 +658,9 @@ void esquina_inferior_derecha_s(){
       epsilon=  f_w_1*U_t_1[TAM_C*f + (c)] + f_w_2*U_t_2[TAM_C*f + (c)] + f_w_3*U_t_3[TAM_C*f + (c)] + f_w_4*U_t_4[TAM_C*f + (c)] ;
       
       gama= f_w_1*lambda_n_1[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c-1)] - presion_capilar[TAM_C*f + (c)]) 
-      + f_w_2*lambda_n_2[TAM_C*f + (c)]*(presion_capilar[TAM_C*f + (c+1)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)])
-      + f_w_4*lambda_n_4[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f+1) + (c)] - presion_capilar[TAM_C*f + (c)]);
+      + f_w_3*lambda_n_3[TAM_C*f + (c)]*(presion_capilar[TAM_C*(f-1) + (c)] - presion_capilar[TAM_C*f + (c)]);
 
-      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
+      saturacion_N[TAM_C*f + (c)] = saturacion[TAM_C*f + (c)] + 1.0*courant*( ((-1.0*epsilon -1.0*gama*TAM_C)/(1.0*TAM_C)) + ( (Q_W[TAM_C*f + (c)])/(1.0*TAM_C*TAM_C) ));       
       
 
   

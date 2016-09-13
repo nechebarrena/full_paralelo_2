@@ -4,17 +4,21 @@
 #include <string.h>
 #include <sys/time.h>
 #include <omp.h>
+#include <libconfig.h>
+#include <stdbool.h>
+#include <sys/stat.h>
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
-/* Definicion de parametros globales                                             */
+/* Definicion de parametros globales  */
+/*
 #define TAM_C 200
 #define TAM_F 200
 #define CB 1   // 0 para una condicion de borde tipo canal y 1 para una tipo FQS
 #define leer_saturacion 0 // 0 para una saturacion seteada en el programa y 1 para cargar una saturacion desde un archivo
-#define leer_K 1 // 0 para una permeabilidad seteada en el programa y 1 para cargar una permeabilidad desde un archivo
+#define leer_K 0 // 0 para una permeabilidad seteada en el programa y 1 para cargar una permeabilidad desde un archivo
 
 #define mu_w 1.0
 #define mu_n 64.0
@@ -23,7 +27,7 @@
 #define q_w 0.1
 #define po 0.0 // el grafico esta con 0.5
 
-#define cachito 0.0000000001
+
 #define error 0.0000000001  //0.0000000001 es lo que venia usando.
 #define error_1 0.0000001
 
@@ -33,10 +37,47 @@
 #define iteraciones 10000000
 
 #define control 195
+*/
+#define cachito 0.0000000001
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 /* Definicion de variables globales                                              */
+
+double *TAM_C_p;
+double *TAM_F_p;
+int *geo_p;
+int *saturacion_seteo_p;
+int *permeabilidad_seteo_p;
+double *mu_w_p;
+double *mu_n_p;
+double *q_n_p;
+double *q_w_p;
+double *po_p;
+double *error_p;
+double *error_1_p;
+double *courant_p;
+double *iteraciones_p;
+double *control_p;
+
+int TAM_C;
+int TAM_F;
+int CB;
+int saturacion_seteo;
+int permeabilidad_seteo;
+double mu_w;
+double mu_n;
+double q_n;
+double q_w;
+double po;
+double error;
+double error_1;
+double courant;
+int iteraciones;
+int control;
+
+
+
 double *presion;
 double *presion_N;
 double *presion_capilar;
@@ -123,7 +164,7 @@ int np_1;
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 /* Funciones del archivo funciones_p_2.c                                         */
-void guardar_o(double *matriz,int num);
+void guardar_o(double *matriz,int num,int opcion);
 void guardar_v(double *vector,int tam);
 void guardar_1(double *matriz);
 void guardar_2(double *matriz);
@@ -164,7 +205,13 @@ void calcular_lambdas();
 void calcular_velocidades();
 void control_bandera(int columna);
 
-void leer_o(double *matriz);
+void leer_o(double *matriz,int opcion);
+int leer(void);
+void copiar_parametros(void);
+void liberar_variables();
+void alocar_parametros();
+void print();
+void correr();
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 /*  Funciones del archivo calculo_presion.c                                      */
